@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16
+    container_name: db
+    environment:
+      POSTGRES_DB: ogrenci_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ogrenci-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    networks:
+      - okul-net
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web-panel
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: ogrenci_db
+      DB_USER: user
+      DB_PASSWORD: password
+    ports:
+      - "5000:5000"
+    networks:
+      - okul-net
+
+volumes:
+  ogrenci-data:
+
+networks:
+  okul-net:
