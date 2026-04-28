@@ -14,7 +14,7 @@ Docker container'ının
 * container'ın 5000 portunu lokal bilgisayarınızın 5000 portuna bağla,
 * okul-net networkünde kaldır container'ını
 * aşağıdaki ortam değişkenlerinden bir environment variable dosyası oluştur ve buradan al ortam değişkenlerini:
-      DB_HOST: db
-      DB_NAME: ogrenci_db
-      DB_USER: user
-      DB_PASSWORD: password
+      DB_HOST=db
+      DB_NAME=ogrenci_db
+      DB_USER=user
+      DB_PASSWORD=password
